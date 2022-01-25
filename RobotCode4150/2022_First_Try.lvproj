@@ -96,15 +96,9 @@ AddOutputFilter chunkFilter
 		<Property Name="target.WebServer.ViAccess" Type="Str">+*</Property>
 		<Property Name="target.webservices.SecurityAPIKey" Type="Str">PqVr/ifkAQh+lVrdPIykXlFvg12GhhQFR8H9cUhphgg=:pTe9HRlQuMfJxAG6QCGq7UvoUpJzAzWGKy5SbZ+roSU=</Property>
 		<Property Name="target.webservices.ValidTimestampWindow" Type="Int">15</Property>
-		<Item Name="Autonomous" Type="Folder" URL="../Autonomous">
-			<Property Name="NI.DISK" Type="Bool">true</Property>
-		</Item>
-		<Item Name="Auxilary" Type="Folder" URL="../Auxilary">
-			<Property Name="NI.DISK" Type="Bool">true</Property>
-		</Item>
-		<Item Name="Climb" Type="Folder" URL="../Climb">
-			<Property Name="NI.DISK" Type="Bool">true</Property>
-		</Item>
+		<Item Name="Autonomous" Type="Folder"/>
+		<Item Name="Auxilary" Type="Folder"/>
+		<Item Name="Climb" Type="Folder"/>
 		<Item Name="DriveSystem" Type="Folder" URL="../DriveSystem">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
