@@ -13,6 +13,8 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="PositionControl.vi" Type="VI" URL="../GeneralPurpose/PositionControl.vi"/>
+		<Item Name="tesst_pos_control.vi" Type="VI" URL="../GeneralPurpose/tesst_pos_control.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
