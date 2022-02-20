@@ -231,12 +231,19 @@ Autonomous
 
 Auxiliary
 	-- Note this is really Intake and Shoot
+	-- Add AuxSetAimPosDmd
+	-- Add SetIntakeUp and SetIntakeDown VI (Global variable setters.)
+
 	AuxGlobals
 	Auxiliary_Shooter_Motor_Speed_Test
+	-- could expand this for aim and other things too.
+
 	ExecuteAux
 	GetAux
 	GetAuxGlobals
 	OpenAux
+	*** There is only one DOUBLE solenoid for intake, not two SINGLE solenoids...
+
 	SetAuxBeltSpeedDmd
 	SetAuxFeederSpeedDmd
 	SetAuxIntakeSpeedDmd
@@ -244,6 +251,9 @@ Auxiliary
 	ShooterStateMachine
 	SpinAuxs
 	SpinIntake
+	-- Is this a routine for auto?  If so it never turns in intake off when
+		done.
+	SpinShooter
 	TurnBelts
 	TurnFeeder
 
