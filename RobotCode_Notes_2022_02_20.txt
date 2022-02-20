@@ -2,25 +2,17 @@
 
 
 Team Code
-
-
-
 	Teleop
-	-- Label what each driving case is for!!!
 	-- DONT USE GLOBAL VARIABLES in this VI.  Call your "setter" VIs !!!!
 	-- Turn the driving Case decider if statements into a separate VI.  
 		Will make code cleaner.
-	-- Wire neatness -- especially when crossing into or out of case stmt.
 	-- Extract all the Button, Axes, and POV values outside the case statement.
 		Allows easier univeral use..
 	-- What is "ShootButton", "RevButton", and "ClimbButton" global variables.
 		Process all the buttons IN THIS ROUTINE and pass their values via
 		setter functions to other routines if needed.
-	-- Use Integers, not floats, for case indexes.  (Right click and select
-		"representatio" to change constant data type.)
 
 DriveSystem
-	
 	Drive_Get_Speed
 	-- Add a routine to get gyro reading, or add gyro output here.
 	-- Add a routine to get lidar distance, or add lidar output here.
@@ -34,22 +26,8 @@ DriveSystem
 		keep the "slope" of the slow down function the same and start
 		the slow down at a different threshold error value depending
 		on what max speed the user passes...
-	-- Now that encoder speed and PID work, do you want the min speed to be
-		2 FT/SEC ??
 
-	ExecuteSpeed
-	-- If there is time, the PID could be tuned a little.
-		Ki can probably be larger..  (maybe between 1 and 2)
-	-- Check robot mode.  If disabled, use zero as the speed demand and
-		write this to global variable.  A small non-zero speed demand
-		when the motors are forced to zero will cause the I part of the
-		PID to wind up.  This causes the "jump" when enabling.
 
-	GetDrive
-	JoyToFPS
-	OpenDrive
-	SetDistanceFromWall
-	SetDriveSpeedDmd
-	TurnDistance.
-	
+
+
 
