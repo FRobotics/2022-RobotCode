@@ -1,0 +1,305 @@
+2/20/2022   JAS  Robot Code Notes.
+
+General
+	-- rename project
+	-- implement a trajectory following VI similar to DriveForwardDistance.
+	-- clean up wires in vi so can clearly see inputs and outputs of VI.
+
+Team Code
+	Autonomous Independent
+	-- Create a "No Nothing Forever" routine and put this as the last
+		step to ensure auto continues until the game mode changes to 
+		teleop.
+	-- For the "Default" case, write a message or something indicating
+		that no auto routine is selected !
+	-- Case "Danger Circle".  Don't write global variables Directly !!!
+
+	Begin
+	-- Ensure that the gyro calibration is finished before opening the
+		compressor.
+
+	Disabled
+	-- no comments.
+
+	Finish
+	-- no comments... (no need to close other things.  this never gets called...)
+
+	Periodic Tasks
+	-- "get" (acquire) routines should be called before the "execute" routines.
+		(Acquire, Decide, Act).
+	-- climb system may need a "get" routine.
+	-- neatness -- avoid crossing wires...
+
+	Robot Global Data
+	-- no comments
+
+	Teleop
+	-- Label what each driving case is for!!!
+	-- DONT USE GLOBAL VARIABLES in this VI.  Call your "setter" VIs !!!!
+	-- Turn the driving Case decider if statements into a separate VI.  
+		Will make code cleaner.
+	-- Wire neatness -- especially when crossing into or out of case stmt.
+	-- Extract all the Button, Axes, and POV values outside the case statement.
+		Allows easier univeral use..
+	-- What is "ShootButton", "RevButton", and "ClimbButton" global variables.
+		Process all the buttons IN THIS ROUTINE and pass their values via
+		setter functions to other routines if needed.
+	-- Add small deadbands for Axes.  These tend not to get all the way to 
+		zero.
+	-- Use Integers, not floats, for case indexes.  (Right click and select
+		"representatio" to change constant data type.)
+	-- Could make other subVI and add to Human System..
+
+	Test
+	-- no comments.
+
+	Vision Processing
+	-- no comments.
+
+Robot Main
+	-- no comments
+
+DriveSystem
+	-General-
+	-- All VI in the Drive system should have "Drive" in their name!
+		If not specifically for drive system, move to general purpose
+		directory.
+
+	BadEncoder
+	-- no longer needed or used..
+
+	Drive_Get_Speed
+	-- Add a routine to get gyro reading, or add gyro output here.
+	-- Add a routine to get lidar distance, or add lidar output here.
+	-- Add a routine to get encoder distance, or add distance output here.
+
+	Drive_Motor_Speed_Test
+	-- no comment
+	-- Can be used to tune PID !!
+
+	DriveForwardDistance
+	-- There is a "Timer" routine to check for expired.  The existing code 
+		is okay too.
+	-- Use setter and getter VI instead of global variables...
+	-- Implement calculation for Threshold Error input (Currently hardcoded
+		at 7.0) as a function of max speed so routine behaves the same
+		regardless what the users passes as max speed.  In other words
+		keep the "slope" of the slow down function the same and start
+		the slow down at a different threshold error value depending
+		on what max speed the user passes...
+	-- Now that encoder speed and PID work, do you want the min speed to be
+		2 FT/SEC ??
+	-- One constant can feed multiple VIs.. (What is there is okay.  However
+		one is changed and the other one isn't, funny things will happen.)
+
+	DriveGlobals
+	-- Looks good.  Ensure there are setter/getter VI for these things!
+
+	DriveNetwork
+	-- Looks good.
+	-- Could put a prefix in the name to arrange things.  Example
+		"Drive/" will arrange things in a "Drive" heirarchy.
+
+	ExecuteSpeed
+	-- Don't put the slew rate limiters in case statements.  This has some
+		side affects.   Just feed with different values.
+		(This is because each separate one remembers the time it 
+		last ran...)
+	-- If there is time, the PID could be tuned a little.
+		Ki can probably be larger..  (maybe between 1 and 2)
+	-- Check robot mode.  If disabled, use zero as the speed demand and
+		write this to global variable.  A small non-zero speed demand
+		when the motors are forced to zero will cause the I part of the
+		PID to wind up.  This causes the "jump" when enabling.
+	-- Add a global variable to indicate Auto(closed loop)/Manual(open loop).  
+		Use this to switch.  Initialize to auto.  Write state to network 
+		tables.
+
+	GetDrive
+	-- Calibrate Lidar
+	-- Rename Encoder Ref to indicate left and right.   They are currently 
+		Encoder 1 and Encoder 2...  Need to change this everywhere.
+		
+	JoyToFPS
+	-- Rename to indicate part of drive system.
+
+	OpenDrive
+	-- Have this routine not end until after gyro is calibrated.  
+	-- rename drive encoders so everyone knows which is right and left.
+
+	SetDistanceFromWall
+	-- There is a "Timer" routine to check for expired.  The existing code 
+		is okay too.
+	-- Use setter and getter VI instead of global variables...
+	-- Implement calculation for Threshold Error input (Currently hardcoded
+		at 7.0) as a function of max speed so routine behaves the same
+		regardless what the users passes as max speed.  In other words
+		keep the "slope" of the slow down function the same and start
+		the slow down at a different threshold error value depending
+		on what max speed the user passes...
+	-- Now that encoder speed and PID work, do you want the min speed to be
+		1.5 FT/SEC ??
+
+	SetDriveSpeedDmd
+	-- Suggest making Left the top input and right the bottom input...
+		If this is done, ALL callers need to be swapped..
+
+	TurnDistance.
+	-- There is a "Timer" routine to check for expired.  The existing code 
+		is okay too.
+	-- Use setter and getter VI instead of global variables...
+	-- Implement calculation for Threshold Error input (Currently hardcoded
+		at 45) as a function of max speed so routine behaves the same
+		regardless what the users passes as max speed.  In other words
+		keep the "slope" of the slow down function the same and start
+		the slow down at a different threshold error value depending
+		on what max speed the user passes...  (It doesn't matter that
+		the error is degrees and speed is ft/sec...slope is still slope.)
+	
+General Purpose
+	ButtonCycle
+	-- wasnt really certain at first what this was.  Suggest adding documentation
+	-- could change value output and constants to integers instead of double float.
+		(right click and change representation)
+
+	ChangeOverTime
+	-- could use getFPGA as time source for greater resolution.  Could also
+		use time as input so everything in the same "loop" uses the same 
+		time.  (This is generally the correct thing to do...)
+ 
+	CheckPosCon
+	-- wasnt really certain at first what this was.  Suggest adding documentation
+	-- Use integers for counts..
+
+	MakeError
+	-- not certain what this is for?
+
+	PositionControl
+	-- no comment
+
+	test_pos_control
+	-- no comment
+
+	Toggle
+	-- document
+
+	When_Pressed
+	-- no comment.
+
+Human
+	FancyDrive
+	-- document so others know what this does.
+
+	GetHumanInput
+	-- could read all the joysticks at once... (and only once per cycle)
+	-- could move network tables write to "human network" (add globals for 
+		joystick values)
+
+	HumanGlobal
+	-- maybe add other things from this system.
+
+	HumanNetwork
+	-- maybe add other things from this system.
+
+	OpenControllers
+	-- no comments
+
+	RumbleControllers
+	-- no comments
+	
+	StopRumble
+	-- no comments
+
+Autonomous
+	DriveFwdAuto
+	-- no comments
+
+	DropIntake
+	-- use setter VI not global variable.
+
+	SetDistFromWall
+	- no comments
+
+	SpinAuxsAuto
+	-- maybe make this more sequenced 
+
+	TurnDistanceAuto
+	-- no comment
+
+	Useless
+	-- obvious comment
+
+Auxiliary
+	-- Note this is really Intake and Shoot
+	-- Add AuxSetAimPosDmd
+	-- Add SetIntakeUp and SetIntakeDown VI (Global variable setters.)
+
+	AuxGlobals
+	-- neatness...
+
+	Auxiliary_Shooter_Motor_Speed_Test
+	-- could expand this for aim and other things too.
+
+	ExecuteAux
+
+	GetAux
+	-- add filtering after shooter speed calculation
+
+	GetAuxGlobals
+	-- add other things to this...  (aim demand, aim position,
+		aim motor output, ball detector, belt motor out, intake motor out,
+		feeder motor output)
+
+	OpenAux
+	*** There is only one DOUBLE solenoid for intake, not two SINGLE solenoids...
+
+	SetAuxBeltSpeedDmd
+	-- no comment
+
+	SetAuxFeederSpeedDmd
+	-- no comment
+
+	SetAuxIntakeSpeedDmd
+	-- no comment
+
+	SetAuxShooterSpeedDmd
+	-- no comment
+
+	ShooterStateMachine
+	-- rename Shoot Button, Rev Button to Shoot Cmd, Rev Cmd..   
+	** DO NOT READ JOYSTICK.  Can't Use in auto.  The inputs need
+		to be commands....   Teleop can set the commands based
+		on joystick inputs....	
+	-- state 3 - should speed demand output be "target" and not manual ??
+	-- state 7 - need extra state to start timer.  This is really 2 states...
+	-- suggest only outputting "manual" speed demands in state 1 while waiting
+		for commands.  Other states should hard code demands (other than
+		shooter speed).
+	-- review states !!
+
+
+	SpinAuxs
+	-- no comment
+
+	SpinIntake
+	-- Is this a routine for auto?  If so it never turns the intake off when
+		done.
+	SpinShooter
+	-- Is this a routine for auto?  If so it never turns the shooter off when
+		done.
+	
+	TurnBelts
+	-- Is this a routine for auto?  If so it never turns the belt off when
+		done.
+
+	TurnFeeder
+	-- Is this a routine for auto?  If so it never turns the feeder off when
+		done.
+
+Climb
+	ClimberStateMachine
+	ClimbGlobals
+	ClimbNetwork
+	ExecuteClimb
+
+
