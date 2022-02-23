@@ -1,40 +1,8 @@
 2/20/2022   JAS  Robot Code Notes.
 
-General
-	-- rename project
-	-- implement a trajectory following VI similar to DriveForwardDistance.
-	-- clean up wires in vi so can clearly see inputs and outputs of VI.
-
-Team Code
-	Autonomous Independent
-	-- Create a "No Nothing Forever" routine and put this as the last
-		step to ensure auto continues until the game mode changes to 
-		teleop.
-	-- For the "Default" case, write a message or something indicating
-		that no auto routine is selected !
-	-- Case "Danger Circle".  Don't write global variables Directly !!!
-
-	Begin
-	-- Ensure that the gyro calibration is finished before opening the
-		compressor.
-
-	Disabled
-	-- no comments.
-
-	Finish
-	-- no comments... (no need to close other things.  this never gets called...)
-
-	Periodic Tasks
-	-- "get" (acquire) routines should be called before the "execute" routines.
-		(Acquire, Decide, Act).
-	-- climb system may need a "get" routine.
-	-- neatness -- avoid crossing wires...
-
-	Robot Global Data
-	-- no comments
-
+Ge
 	Teleop
-	-- Label what each driving case is for!!!
+	
 	-- DONT USE GLOBAL VARIABLES in this VI.  Call your "setter" VIs !!!!
 	-- Turn the driving Case decider if statements into a separate VI.  
 		Will make code cleaner.
@@ -46,19 +14,8 @@ Team Code
 		setter functions to other routines if needed.
 	-- Add small deadbands for Axes.  These tend not to get all the way to 
 		zero.
-	-- Use Integers, not floats, for case indexes.  (Right click and select
-		"representatio" to change constant data type.)
-	-- Could make other subVI and add to Human System..
 
-	Test
-	-- no comments.
-
-	Vision Processing
-	-- no comments.
-
-Robot Main
-	-- no comments
-
+	
 DriveSystem
 	-General-
 	-- All VI in the Drive system should have "Drive" in their name!
