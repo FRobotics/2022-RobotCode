@@ -8,21 +8,9 @@ Team Code
 	-- DONT USE GLOBAL VARIABLES in this VI.  Call your "setter" VIs !!!!
 	-- Turn the driving Case decider if statements into a separate VI.  
 		Will make code cleaner.
-	-- Extract all the Button, Axes, and POV values outside the case statement.
-		Allows easier univeral use..
 
 
 DriveSystem
-	-- All VI in the Drive system should have "Drive" in their name!
-		If not specifically for drive system, move to general purpose
-		directory.
-
-	Drive_Get_Speed
-	-- Add a routine to get gyro reading, or add gyro output here.
-	-- Add a routine to get lidar distance, or add lidar output here.
-	-- Add a routine to get encoder distance, or add distance output here.
-
-	
 	DriveForwardDistance
 	-- Use setter and getter VI instead of global variables...
 	-- Implement calculation for Threshold Error input (Currently hardcoded
@@ -49,12 +37,6 @@ DriveSystem
 	-- Rename Encoder Ref to indicate left and right.   They are currently 
 		Encoder 1 and Encoder 2...  Need to change this everywhere.
 		
-	JoyToFPS
-	-- Rename to indicate part of drive system.
-
-	OpenDrive
-	-- rename drive encoders so everyone knows which is right and left.
-
 	SetDistanceFromWall
 
 	-- Use setter and getter VI instead of global variables...
@@ -76,27 +58,11 @@ DriveSystem
 		the slow down at a different threshold error value depending
 		on what max speed the user passes...  (It doesn't matter that
 		the error is degrees and speed is ft/sec...slope is still slope.)
-	
-General Purpose
-	ButtonCycle
-	
-	
-Human
-	
-	GetHumanInput
-	-- could read all the joysticks at once... (and only once per cycle)
-	-- could move network tables write to "human network" (add globals for 
-		joystick values)
-
-	
 
 Autonomous
 	
 	DropIntake
 	-- use setter VI not global variable.
-
-	SpinAuxsAuto
-	-- maybe make this more sequenced 
 
 Auxiliary
 
