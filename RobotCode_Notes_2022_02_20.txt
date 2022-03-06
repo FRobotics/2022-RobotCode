@@ -6,8 +6,6 @@ General
 Team Code
 	Teleop
 	-- DONT USE GLOBAL VARIABLES in this VI.  Call your "setter" VIs !!!!
-	-- Turn the driving Case decider if statements into a separate VI.  
-		Will make code cleaner.
 
 
 DriveSystem
@@ -24,19 +22,13 @@ DriveSystem
 	ExecuteSpeed
 	-- If there is time, the PID could be tuned a little.
 		Ki can probably be larger..  (maybe between 1 and 2)
-	-- Check robot mode.  If disabled, use zero as the speed demand and
-		write this to global variable.  A small non-zero speed demand
-		when the motors are forced to zero will cause the I part of the
-		PID to wind up.  This causes the "jump" when enabling.
 	-- Add a global variable to indicate Auto(closed loop)/Manual(open loop).  
 		Use this to switch.  Initialize to auto.  Write state to network 
 		tables.
 
 	GetDrive
 	-- Calibrate Lidar
-	-- Rename Encoder Ref to indicate left and right.   They are currently 
-		Encoder 1 and Encoder 2...  Need to change this everywhere.
-		
+
 	SetDistanceFromWall
 
 	-- Use setter and getter VI instead of global variables...
@@ -68,9 +60,5 @@ Auxiliary
 
 	GetAux
 	-- add filtering after shooter speed calculation
-
-
-	OpenAux
-	*** There is only one DOUBLE solenoid for intake, not two SINGLE solenoids...
 
 
