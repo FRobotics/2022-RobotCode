@@ -1,0 +1,30 @@
+2022 robot original buttons
+
+
+controller 1
+----------------------------------
+A		- toggle reverse	X
+Start		- cycle drive mode	X	
+Left bump	- drop intake		X
+Right Bump	- shoot button		X
+Y		- override shoot	?? 
+X		- switch cam		X
+Right Joystick	- auto aim		X
+Start		- override cycle	NOT USED
+
+
+controller 2
+----------------------------------
+right bump	- climb			X
+left bump	- climb back		X
+y		- climb ang override	X (Arm forward toggle)
+back		- toggle override	X (climb override)
+right trig	- climber up		X (analog joystick - manual climb motor dmd)
+left trib	- climber down		X (analog joystick - manual climb motor dmd)
+X		- rev button		X (rev button)
+B		- intake / cycle belt	X
+start		- reverse intake	X
+A		- toggle shoot speed	WIRE DOESN'T DO ANYTHING
+right joy	- reverse feeder	X
+left joy	- let there be light	X
+
