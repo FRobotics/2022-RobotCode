@@ -11,7 +11,8 @@
 # Executables
 *.exe
 *.rtexe
-RobotCode4150/Builds/*
+*rtexe
+RobotCode4150/Builds/
 
 # Metadata
 *.aliases
