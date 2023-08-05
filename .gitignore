@@ -15,6 +15,7 @@
 **.rtexe
 RobotCode4150\Builds\**
 **\Builds\**
+**/Builds/**
 
 # Metadata
 *.aliases
