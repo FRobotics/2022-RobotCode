@@ -16,6 +16,8 @@
 RobotCode4150\Builds\**
 **\Builds\**
 **/Builds/**
+/Builds/**
+\Builds\**
 
 # Metadata
 *.aliases
